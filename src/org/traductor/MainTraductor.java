@@ -14,22 +14,25 @@ public class MainTraductor {
 	   * - ARFF output file
 	   */
 	  public static void main(String[] args) throws Exception {
-	    if (args.length != 2) {
-	      System.out.println("\nUsage: CSV2Arff <input.csv> <output.arff>\n");
-	      System.exit(1);
-	    }
-	 
+	   
+	   System.out.println("Comenzando");
+		  
 	    // load CSV 
 	    CSVLoader loader = new CSVLoader();
-	    loader.setSource(new File(args[0]));
+	    loader.setSource(new File("tweetSentiment.train.csv"));
 	    Instances data = loader.getDataSet();
 	 
+	    System.out.println("CSV Cargado");
+	    
 	    // save ARFF
 	    ArffSaver saver = new ArffSaver();
 	    saver.setInstances(data);
 	    saver.setFile(new File(args[1]));
-	    saver.setDestination(new File(args[1]));
+	    saver.setDestination(new File("output.arff"));
 	    saver.writeBatch();
+	    
+	    System.out.println("Arff generado");
+
 	  }
 
 }
