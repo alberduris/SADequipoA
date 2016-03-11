@@ -19,7 +19,7 @@ public class MainTraductor {
 		  
 	    // load CSV 
 	    CSVLoader loader = new CSVLoader();
-	    loader.setSource(new File("tweetSentiment.train.csv"));
+	    loader.setSource(new File("prueba.csv"));
 	    Instances data = loader.getDataSet();
 	 
 	    System.out.println("CSV Cargado");
@@ -27,8 +27,8 @@ public class MainTraductor {
 	    // save ARFF
 	    ArffSaver saver = new ArffSaver();
 	    saver.setInstances(data);
-	    saver.setFile(new File(args[1]));
-	    saver.setDestination(new File("output.arff"));
+	    saver.setFile(new File("output.arff"));
+	    saver.setDestination(new File("output2.arff"));
 	    saver.writeBatch();
 	    
 	    System.out.println("Arff generado");
