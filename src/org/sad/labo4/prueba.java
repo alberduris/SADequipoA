@@ -1,5 +1,7 @@
 package org.sad.labo4;
 
-public class prueba {
+import javax.swing.plaf.synth.SynthScrollBarUI;
 
+public class prueba {
+	private int ooola;
 }
