@@ -6,7 +6,7 @@ import weka.core.converters.CSVLoader;
 
 import java.io.File;
 
-public class MainTraductor {
+public class Traductor {
 
 	/**
 	 * takes 2 arguments: - CSV input file - ARFF output file
