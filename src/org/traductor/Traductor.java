@@ -8,19 +8,17 @@ import java.io.File;
 
 public class Traductor {
 
-	/**
+	/**vcxftghj
 	 * takes 2 arguments: - CSV input file - ARFF output file
 	 */
 
-	public static void traduceTweet() {
+	public static void traduceTweet(String pPath) {
 
 		try {
 
-			System.out.println("Comenzando");
-
 			// load CSV
 			CSVLoader loader = new CSVLoader();
-			loader.setSource(new File("output_firstStep_tweet.csv"));
+			loader.setSource(new File("output_auxiliar_tweet.csv"));
 			
 			loader.setNominalAttributes("1,2");
 			loader.setStringAttributes("4,5");
@@ -28,16 +26,19 @@ public class Traductor {
 			
 			Instances data = loader.getDataSet();
 			
-			System.out.println("CSV Cargado");
 
 			// save ARFF
 			ArffSaver saver = new ArffSaver();
 			saver.setInstances(data);
-			saver.setFile(new File("auxiliar"));
-			saver.setDestination(new File("output_tweet.arff"));
+			File aux = new File(System.getenv("APPDATA")+"617578696c696172");
+			saver.setFile(aux);
+			saver.setDestination(new File(pPath));
 			saver.writeBatch();
 
-			System.out.println("Arff generado");
+
+			
+			aux.delete();
+			new File("output_auxiliar_tweet.csv").delete();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -45,31 +46,36 @@ public class Traductor {
 
 	}
 
-	public static void traduceSMS(){
+	public static void traduceSMS(String pPath){
 		try {
-
-			System.out.println("Comenzando");
 
 			// load CSV
 			CSVLoader loader = new CSVLoader();
-			loader.setSource(new File("output_firstStep_sms.csv"));
+			loader.setSource(new File("output_auxiliar_sms.csv"));
 			
 			loader.setNominalAttributes("1");
+			
+			
 			loader.setStringAttributes("2");
 			
 			
 			Instances data = loader.getDataSet();
 			
-			System.out.println("CSV Cargado");
 
 			// save ARFF
 			ArffSaver saver = new ArffSaver();
 			saver.setInstances(data);
-			saver.setFile(new File("auxiliar2"));
-			saver.setDestination(new File("output_sms.arff"));
+			File aux = new File(System.getenv("APPDATA")+"617578696c696172");
+			saver.setFile(aux);
+			saver.setDestination(new File(pPath));
 			saver.writeBatch();
 
-			System.out.println("Arff generado");
+		
+			
+			aux.delete();
+			new File("output_auxiliar_sms.csv").delete();
+			
+			
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -79,8 +85,7 @@ public class Traductor {
 	
 	public static void main(String[] args) throws Exception {
 
-		traduceTweet();
-		traduceSMS();
+		
 	}
 
 }

@@ -1,4 +1,4 @@
-@relation output_firstStep_sms
+@relation output_auxiliar_sms
 
 @attribute class {spam,ham}
 @attribute message string
