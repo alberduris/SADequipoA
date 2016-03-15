@@ -31,7 +31,7 @@ public class GenericFilter {
 
 			while (line != null) {
 				cont++;
-				if(cont > 1000 && cont < 2500)System.out.println(cont + line);
+				
 				if (line.equalsIgnoreCase("")) {// Si es una linea vacia
 												// saltamos
 					line = br.readLine();
@@ -84,6 +84,10 @@ public class GenericFilter {
 						mensaje = mensaje.replace(';', ' ');
 						mensaje = mensaje.replace('/', ' ');
 						mensaje = mensaje.replace(':', ' ');
+						mensaje = mensaje.replaceAll("[^a-zA-Z0-9]"," ");
+						mensaje = mensaje.trim().replaceAll(" +", " ");
+						if(mensaje.startsWith(" ")) mensaje = mensaje.substring(1,mensaje.length());
+						if(mensaje.endsWith(" ")) mensaje = mensaje.substring(0,mensaje.length()-1);
 
 						mensaje = "\"" + mensaje + "\""; // Reconstruimos las
 						// comillas dobles
