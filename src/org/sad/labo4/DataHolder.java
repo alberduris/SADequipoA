@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
+import weka.core.Attribute;
 import weka.core.Instances;
 
 public class DataHolder {
@@ -109,8 +110,20 @@ public class DataHolder {
 	 * return void Los datos estan asignados a datosTrain
 	 */
 	public static void setDatosTrain(Instances pData) {
-		pData = datosTrain;
-	}
+		datosTrain = pData;
+		String atributo = "";
+		int attIndex = -1;
+		boolean fin = false;
+		for(int i = 0; i < datosTrain.numAttributes() && !fin; i++){
+			atributo = datosTrain.instance(0).attribute(i).name();
+			if(atributo.equals("classs")){
+				attIndex = i;
+				fin = true;
+			}
+		}
+		datosTrain.setClassIndex(attIndex);
+	
+		}
 	
 	/*
 	 * brief Asigna los datos pasados por parámetro a los datosTest
@@ -120,7 +133,7 @@ public class DataHolder {
 	 * return void Los datos estan asignados a datosTest
 	 */
 	public static void setDatosTest(Instances pData) {
-		pData = datosTest;
+		datosTest = pData;
 	}
 	
 	/*
@@ -131,7 +144,27 @@ public class DataHolder {
 	 * return void Los datos estan asignados a datosBlind
 	 */
 	public static void setDatosBlind(Instances pData) {
-		pData = datosBlind;
+		datosBlind = pData;
+	}
+	
+	public static void printDatos(Instances pData){
+		int cont = 0;
+		for(int i = 0; i < pData.numInstances(); i++){
+			System.out.println(pData.instance(i));
+			cont++;
+		}
+		System.out.println("El set de datos tiene "+cont+" instancias.");
+	}
+	
+	public static void printAttributos(Instances pData){
+		int cont = 0;
+		for(int i = 0; i < pData.numAttributes(); i++){
+			System.out.println(pData.attribute(i));
+			cont++;
+		}
+		System.out.println("El set de datos tiene "+cont+" atributos.");
+
+		
 	}
 
 	/*

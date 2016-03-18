@@ -10,8 +10,16 @@ public class Principal {
 		
 		//Cargar datos
 		DataHolder.loadTrainData(args[0]);
-		DataHolder.loadTestData(args[1]);
-		DataHolder.loadBlindData(args[2]);
+		//DataHolder.loadTestData(args[1]);
+		//DataHolder.loadBlindData(args[2]);
+				
+		//Preprocesado
+		Preprocess.stringToWordVector(DataHolder.getDatosTrain());
+		Preprocess.selectAttributes();
+		
+		
+		//Imprimir
+		DataHolder.printAttributos(DataHolder.getDatosTrain());
 
 	}
 
