@@ -19,7 +19,7 @@ public class GenericFilter {
 			FileWriter fileW = new FileWriter("output_auxiliar_tweet.csv");
 			BufferedWriter writer = new BufferedWriter(fileW);
 
-			writer.write("\"topic\",\"class\",\"TweetId\",\"TweetDate\",\"TweetText\"\n");
+			writer.write("\"topicazo\",\"classs\",\"TweetId\",\"TweetDate\",\"TweetText\"\n");
 			writer.write("\"?\",\"positive\",\"?\",\"?\",\"?\"\n");
 			writer.write("\"?\",\"negative\",\"?\",\"?\",\"?\"\n");
 			writer.write("\"?\",\"neutral\",\"?\",\"?\",\"?\"\n");

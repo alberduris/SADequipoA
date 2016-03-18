@@ -1,7 +1,5 @@
 package org.traductor;
 
-import java.io.File;
-
 public class MainTraductor {
 
 	public static void main(String[] args) {
@@ -11,7 +9,7 @@ public class MainTraductor {
 
 			GenericFilter.tweetSentimentFilter(args[0]);
 			Traductor.traduceTweet(args[1]);
-			ArffCleaner.principal();
+			ArffCleaner.principal(args[1]);
 			
 			
 			System.out.println("Arff generado");

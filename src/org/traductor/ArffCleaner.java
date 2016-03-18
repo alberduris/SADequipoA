@@ -14,10 +14,10 @@ public class ArffCleaner {
 
 	static Instances datos;
 
-	public static void loadData() {
+	public static void loadData(String pPath) {
 		try {
 			// load data
-			BufferedReader reader = new BufferedReader(new FileReader("output_tweet.arff"));
+			BufferedReader reader = new BufferedReader(new FileReader(pPath));
 			datos = new Instances(reader);
 			reader.close();
 
@@ -50,12 +50,12 @@ public class ArffCleaner {
 		}
 	}
 
-	public static void saveData() {
+	public static void saveData(String pPath) {
 		try {
-			datos.setRelationName("clean_tweet_output");
+			datos.setRelationName(pPath.substring(0,pPath.length()-5));
 			ArffSaver saver = new ArffSaver();
 			saver.setInstances(datos);
-			saver.setFile(new File("clean_tweet_output.arff"));
+			saver.setFile(new File(pPath));
 			saver.writeBatch();
 			new File("output_tweet.arff").delete();
 			
@@ -66,11 +66,11 @@ public class ArffCleaner {
 
 	}
 
-	public static void principal() {
-		loadData();
+	public static void principal(String pPath) {
+		loadData(pPath);
 		deleteAllMissingInstances();
 		selectUsefulAttributes();
-		saveData();
+		saveData(pPath);
 
 	}
 
