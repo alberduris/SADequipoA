@@ -16,6 +16,7 @@ public class Principal {
 		DataHolder.loadTrainData(args[0]);
 		DataHolder.loadTestData(args[1]);
 		DataHolder.loadBlindData(args[2]);
+		DataHolder.loadTrainTestData();
 				
 		//Preprocesado
 		Preprocess.stringToWordVector();
@@ -23,11 +24,11 @@ public class Principal {
 		
 		
 		//Imprimir
-		DataHolder.printAttributos(DataHolder.getDatosTrain());
-		scanner.nextLine();
-		DataHolder.printAttributos(DataHolder.getDatosTest());
-		scanner.nextLine();
-		DataHolder.printAttributos(DataHolder.getDatosBlind());
+		System.out.println(DataHolder.getDatosTrain().numAttributes());
+		System.out.println(DataHolder.getDatosTest().numAttributes());
+		System.out.println(DataHolder.getDatosBlind().numAttributes());
+		//System.out.println(DataHolder.getDatosTrainTest().numAttributes());
+
 
 	}
 

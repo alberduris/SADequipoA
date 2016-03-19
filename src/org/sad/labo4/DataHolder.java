@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 
 import weka.core.Attribute;
+import weka.core.Instance;
 import weka.core.Instances;
 
 public class DataHolder {
@@ -14,6 +15,7 @@ public class DataHolder {
 	private static Instances datosTrain;
 	private static Instances datosTest;
 	private static Instances datosBlind;
+	private static Instances datosTrainTest;
 
 	/*
 	 * @brief Carga los datos de un archivo arff
@@ -74,6 +76,27 @@ public class DataHolder {
 		}
 
 	}
+	
+	/*
+	 * @brief Carga los datos de un archivo arff
+	 * 
+	 * @param String pPath El path completo del archivo arff
+	 * 
+	 * @return void Se guardan los datos en el objeto datosTrainTest de tipo Instances
+	 */
+	public static void loadTrainTestData() {
+		
+		datosTrainTest = datosTrain;
+		Instance instancia;
+		
+		for(int i = 0; i < datosTest.numInstances(); i++){
+			instancia = datosTest.instance(i);
+			datosTrainTest.add(instancia);
+		}
+		
+		
+		
+	}
 
 	/*
 	 * brief Devuelve los datosTrain almacenados
@@ -101,6 +124,16 @@ public class DataHolder {
 	public static Instances getDatosBlind() {
 		return datosBlind;
 	}
+	
+	/*
+	 * brief Devuelve los datosTrainTest almacenados
+	 * 
+	 * return datos Los datosTrainTest almacenados
+	 */
+	public static Instances getDatosTrainTest() {
+		return datosTrainTest;
+	}
+	
 
 	/*
 	 * brief Asigna los datos pasados por parámetro a los datosTrain
@@ -147,6 +180,31 @@ public class DataHolder {
 		datosBlind = pData;
 	}
 	
+	
+	
+	/*
+	 * brief Asigna los datos pasados por parámetro a los datosTrainTest
+	 * 
+	 * param pData Los datos a asignar
+	 * 
+	 * return void Los datos estan asignados a datosTrainTest
+	 */
+	public static void setDatosTrainTest(Instances pData) {
+		datosTrainTest = pData;
+		String atributo = "";
+		int attIndex = -1;
+		boolean fin = false;
+		for(int i = 0; i < datosTrainTest.numAttributes() && !fin; i++){
+			atributo = datosTrainTest.instance(0).attribute(i).name();
+			if(atributo.equals("classs")){
+				attIndex = i;
+				fin = true;
+			}
+		}
+		datosTrainTest.setClassIndex(attIndex);
+	
+		}
+	
 	public static void printDatos(Instances pData){
 		int cont = 0;
 		for(int i = 0; i < pData.numInstances(); i++){
@@ -166,6 +224,8 @@ public class DataHolder {
 
 		
 	}
+
+	
 
 	/*
 	 * @brief Descripcion resumida del metodo Puedes seguir en otra linea

@@ -1,12 +1,8 @@
 package org.sad.labo4;
 
-import weka.attributeSelection.AttributeSelection;
 import weka.attributeSelection.InfoGainAttributeEval;
 import weka.attributeSelection.Ranker;
-import weka.classifiers.meta.AttributeSelectedClassifier;
-import weka.core.Instances;
 import weka.core.stemmers.LovinsStemmer;
-import weka.core.stemmers.Stemmer;
 import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.StringToWordVector;
 
@@ -31,6 +27,15 @@ public class Preprocess {
 			DataHolder.setDatosTrain(Filter.useFilter(DataHolder.getDatosTrain(), stwv));
 			DataHolder.setDatosTest(Filter.useFilter(DataHolder.getDatosTest(), stwv));
 			DataHolder.setDatosBlind(Filter.useFilter(DataHolder.getDatosBlind(), stwv));
+			//DataHolder.setDatosTrainTest(Filter.useFilter(DataHolder.getDatosTrainTest(), stwv));
+			
+			System.out.println(DataHolder.getDatosTrain().numAttributes());
+			System.out.println(DataHolder.getDatosTest().numAttributes());
+			System.out.println(DataHolder.getDatosBlind().numAttributes());
+			//System.out.println(DataHolder.getDatosTrainTest().numAttributes());
+
+			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -54,6 +59,7 @@ public class Preprocess {
 			DataHolder.setDatosTrain(Filter.useFilter(DataHolder.getDatosTrain(), filter));
 			DataHolder.setDatosTest(Filter.useFilter(DataHolder.getDatosTest(), filter));
 			DataHolder.setDatosBlind(Filter.useFilter(DataHolder.getDatosBlind(), filter));
+			//DataHolder.setDatosTrainTest(Filter.useFilter(DataHolder.getDatosTrainTest(), filter));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
