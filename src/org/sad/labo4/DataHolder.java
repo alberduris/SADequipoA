@@ -86,7 +86,8 @@ public class DataHolder {
 	 */
 	public static void loadTrainTestData() {
 		
-		datosTrainTest = datosTrain;
+		datosTrainTest = new Instances(datosTrain,0,datosTrain.numInstances());//Copiar objeto Instances
+
 		Instance instancia;
 		
 		for(int i = 0; i < datosTest.numInstances(); i++){
@@ -94,7 +95,7 @@ public class DataHolder {
 			datosTrainTest.add(instancia);
 		}
 		
-		
+
 		
 	}
 

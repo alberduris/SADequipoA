@@ -17,17 +17,32 @@ public class Principal {
 		DataHolder.loadTestData(args[1]);
 		DataHolder.loadBlindData(args[2]);
 		DataHolder.loadTrainTestData();
-				
+//				
 		//Preprocesado
 		Preprocess.stringToWordVector();
 		Preprocess.infoGain();
 		
+	
 		
-		//Imprimir
-		System.out.println(DataHolder.getDatosTrain().numAttributes());
-		System.out.println(DataHolder.getDatosTest().numAttributes());
-		System.out.println(DataHolder.getDatosBlind().numAttributes());
-		//System.out.println(DataHolder.getDatosTrainTest().numAttributes());
+		
+		//Clasificar-Evaluar
+		
+		//Resubstitution
+//		Evaluate.evaluarNaiveResubstitution();
+//		Evaluate.evaluarBayesNetResubstitution();
+		
+		//CrossFold
+//		Evaluate.evaluarNaiveCrossFold();
+//		Evaluate.evaluarBayesNetCrossFold();
+		
+		//HoldOut
+		Evaluate.evaluarNaiveHoldOut();
+		Evaluate.evaluarBayesNetHoldOut();
+
+		
+		
+		
+
 
 
 	}
