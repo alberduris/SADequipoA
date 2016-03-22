@@ -1,11 +1,12 @@
 package org.sad.labo4;
 
+import java.io.File;
 import java.util.Random;
 
-import weka.attributeSelection.AttributeSelection;
 import weka.attributeSelection.InfoGainAttributeEval;
 import weka.attributeSelection.Ranker;
 import weka.core.Instances;
+import weka.core.Stopwords;
 import weka.core.stemmers.LovinsStemmer;
 import weka.core.tokenizers.WordTokenizer;
 import weka.filters.Filter;
@@ -16,12 +17,14 @@ public class Preprocess {
 
 	static StringToWordVector stwv;
 	static InfoGainAttributeEval infoGain;
-
+	
+	
 	public static void stringToWordVector() {
 
 		stwv = new StringToWordVector();
 
 		try {
+			
 			stwv.setInputFormat(DataHolder.getDatosTrain());
 			stwv.setAttributeIndices("3");
 			stwv.setWordsToKeep(99999);
@@ -30,13 +33,15 @@ public class Preprocess {
 			stwv.setTokenizer(new WordTokenizer());
 			stwv.setUseStoplist(false); //Mejor resultado
 			stwv.setOutputWordCounts(true); //Es importante tenerlo para el InfoGain
-			stwv.setIDFTransform(true);// ¿No hace nada? 
+			stwv.setIDFTransform(false);
+			stwv.setStopwords(new File("/files/custom_stop.csv"));
 			
 			//Guardar todos los nuevos datos con batch filtering
 			DataHolder.setDatosTrain(Filter.useFilter(DataHolder.getDatosTrain(), stwv));
 			DataHolder.setDatosTest(Filter.useFilter(DataHolder.getDatosTest(), stwv));
 			DataHolder.setDatosBlind(Filter.useFilter(DataHolder.getDatosBlind(), stwv));
 			DataHolder.setDatosTrainTest(Filter.useFilter(DataHolder.getDatosTrainTest(), stwv));
+			
 			
 			
 			
