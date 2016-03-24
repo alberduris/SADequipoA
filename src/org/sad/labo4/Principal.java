@@ -24,10 +24,6 @@ public class Principal {
 		Preprocess.infoGain();
 		
 
-		
-	
-		
-		
 		//Clasificar-Evaluar
 		
 		//Resubstitution
@@ -35,12 +31,12 @@ public class Principal {
 		Evaluate.evaluarBayesNetResubstitution();
 		
 		//CrossFold
-		Evaluate.evaluarNaiveCrossFold();
-		Evaluate.evaluarBayesNetCrossFold();
-		
-		//HoldOut
-		Evaluate.evaluarNaiveHoldOut();
-		Evaluate.evaluarBayesNetHoldOut();
+//		Evaluate.evaluarNaiveCrossFold();
+//		Evaluate.evaluarBayesNetCrossFold();
+//		
+//		//HoldOut
+//		Evaluate.evaluarNaiveHoldOut();
+//		Evaluate.evaluarBayesNetHoldOut();
 
 		
 		

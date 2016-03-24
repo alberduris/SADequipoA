@@ -48,6 +48,8 @@ public class Evaluate {
 			Evaluation eval = new Evaluation(DataHolder.getDatosTrainTest());
 			eval.evaluateModel(bayesNet, DataHolder.getDatosTrainTest());		
 			printResultSet(eval,DataHolder.getDatosTrainTest());
+			
+			
 
 
 		} catch (Exception e) {
@@ -160,25 +162,23 @@ public static void evaluarBayesNetHoldOut(){
 	
 	
 	public static void printResultSet(Evaluation pEvaluator,Instances pData) throws Exception {
-		// HACER!!!! Imprimir matriz de confusión
+		
 		double acc = pEvaluator.pctCorrect();
 		double inc = pEvaluator.pctIncorrect();
-		double kappa = pEvaluator.kappa();
-		double mae = pEvaluator.meanAbsoluteError();
-		double rmse = pEvaluator.rootMeanSquaredError();
-		double rae = pEvaluator.relativeAbsoluteError();
-		double rrse = pEvaluator.rootRelativeSquaredError();
 		double confMatrix[][] = pEvaluator.confusionMatrix();
+		double fMea = pEvaluator.weightedFMeasure();
+		double prec = pEvaluator.precision(0);
+		double rec = pEvaluator.recall(0);
 
 		System.out.println("*****************************************");
 		System.out.println("Correctly Classified Instances  " + acc);
 		System.out.println("Incorrectly Classified Instances  " + inc);
-		System.out.println("Kappa statistic  " + kappa);
-		System.out.println("Mean absolute error  " + mae);
-		System.out.println("Root mean squared error  " + rmse);
-		System.out.println("Relative absolute error  " + rae);
-		System.out.println("Root relative squared error  " + rrse);
-		System.out.println("*****************************************");
+		System.out.println("F-Measure  " + fMea);
+		System.out.println("Precision  " + prec);
+		System.out.println("Recall  " + rec);
+
+		System.out.println("************CONFUSSION MATRIX**************");
+		PrecisionRecallCurve.generarCurva(pEvaluator, pData);
 		printConfussionMatrix(confMatrix,pData);
 
 	}
