@@ -23,7 +23,6 @@ public class GenericFilter {
 			writer.write("\"?\",\"positive\",\"?\",\"?\",\"?\"\n");
 			writer.write("\"?\",\"negative\",\"?\",\"?\",\"?\"\n");
 			writer.write("\"?\",\"neutral\",\"?\",\"?\",\"?\"\n");
-			writer.write("\"?\",\"irrelevant\",\"?\",\"?\",\"?\"\n");
 
 			
 			line = br.readLine();// Skip primera linea
@@ -49,6 +48,13 @@ public class GenericFilter {
 					line = br.readLine();
 				}
 				else {
+					
+					String clase = line.substring(line.indexOf(',')+2, line.length());
+					clase = clase.substring(0, clase.indexOf(',')-1);
+					
+					if (clase.equalsIgnoreCase("irrelevant")){
+						line = line.replace("irrelevant", "neutral");
+					}
 
 					String mensaje = line.substring(line.lastIndexOf("\",\"") + 1, line.lastIndexOf('"') + 1); // Mensaje
 					// con

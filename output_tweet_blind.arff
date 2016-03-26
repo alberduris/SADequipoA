@@ -1,11 +1,10 @@
 @relation output_tweet_blind
 
 @attribute topicazo {apple,google,twitter,microsoft}
-@attribute classs {positive,negative,neutral,irrelevant}
+@attribute classs {positive,negative,neutral}
 @attribute TweetText string
 
 @data
-apple,?,'Fico manso os pre os desses IPHONEs absurdos R 2 500 Assim n o d F a apple S se eu fizesse programa na Beira Mar'
 google,?,'google s galaxy nexus just came out with anroid4 0 http t co p5kuIoox'
 google,?,'RT aalkhubaizi Introducing Android 4 0 Ice Cream SandwichIntroducing Android 4 0 Ice Cream Sandwich http t co L4Hqkv0c Google An'
 twitter,?,'These Hoes Follow Me Like Twitter'
