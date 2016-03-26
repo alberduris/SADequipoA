@@ -243,6 +243,24 @@ public class DataHolder {
 		
 	}
 
+	public static int getClassIndex(Instances pData) {
+		Instances datos = pData;
+		String atributo = "";
+		int attIndex = -1;
+		boolean fin = false;
+		for(int i = 0; i < datos.numAttributes() && !fin; i++){
+			atributo = datos.instance(0).attribute(i).name();
+			if(atributo.equals("classs")){
+				attIndex = i;
+				fin = true;
+			}
+		}
+		return attIndex;
+	
+		}// TODO Auto-generated method stub
+		
+
+
 	
 
 	/*
