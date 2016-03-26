@@ -17,6 +17,23 @@ public class DataHolder {
 	private static Instances datosBlind;
 	private static Instances datosTrainTest;
 
+	
+	public static Instances loadData(String pPath) {
+		Instances datos = null;
+		try {
+
+			reader = new BufferedReader(new FileReader(pPath));
+			datos = new Instances(reader);
+			reader.close();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		return datos;
+
+	}
+	
 	/*
 	 * @brief Carga los datos de un archivo arff
 	 * 
