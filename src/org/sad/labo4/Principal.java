@@ -15,18 +15,20 @@ public class Principal {
 	public static void main(String[] args) {
 		
 		
-		
+		System.out.println("Cargando datos...");
 		//Cargar datos
 		DataHolder.loadTrainData(args[0]);
 		DataHolder.loadTestData(args[1]);
 		DataHolder.loadBlindData(args[2]);
 		DataHolder.loadTrainTestData();
-		
+		System.out.println("Datos cargados");
 
+		System.out.println("Preprocesando datos...");
 		//Preprocesado
 		Preprocess.stringToWordVector();
 		Preprocess.infoGain();
-		
+		System.out.println("Datos preprocesados");
+
 
 		//Clasificar-Evaluar
 		
@@ -44,7 +46,10 @@ public class Principal {
 		
 		//BarridoParametros
 		//Evaluate.barridoParametrosK2();
-		Evaluate.barridoParametrosHillClimbing();
+		//Evaluate.barridoParametrosHillClimbing();
+		//Evaluate.barridoParametrosTAN();
+		Evaluate.barridoParametrosSimulatedAnnealing();
+		
 
 		
 		

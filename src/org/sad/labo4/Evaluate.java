@@ -177,7 +177,7 @@ public class Evaluate {
 
 		try {
 
-			writerK2 = new FileWriter("Barrido_K2.csv", true);
+			writerK2 = new FileWriter("/Barridos/Barrido_K2.csv", true);
 			writerK2.write("BARRIDO_K2\n");
 			writerK2.write("maxNumberOfParents,F-Measure\n");
 			System.out.println("BARRIDO_K2");
@@ -186,7 +186,7 @@ public class Evaluate {
 
 			//Barrido numOfParents K2
 			for (int i = 4; i <= 10; i++) {
-				writerK2 = new FileWriter("Barrido_K2.csv", true);
+				writerK2 = new FileWriter("/Barridos/Barrido_K2.csv", true);
 				k2.setMaxNrOfParents(i);
 				bayesNet = new BayesNet();
 				bayesNet.setSearchAlgorithm(k2);
@@ -227,7 +227,7 @@ public class Evaluate {
 
 		try {
 
-			writerHill = new FileWriter("Barrido_HillClimber.csv");
+			writerHill = new FileWriter("/Barridos/Barrido_HillClimber.csv");
 			writerHill.write("BARRIDO_HillClimber\n");
 			writerHill.write("maxNumberOfParents,F-Measure\n");
 			System.out.println("BARRIDO_Barrido_HillClimber");
@@ -235,7 +235,7 @@ public class Evaluate {
 
 			//Barrido numOfParents HillClimber
 			for (int i = 1; i <= 100; i++) {
-				writerHill = new FileWriter("Barrido_HillClimbing.csv", true);
+				writerHill = new FileWriter("/Barridos/Barrido_HillClimbing.csv", true);
 				hillClimber.setMaxNrOfParents(i);
 				bayesNet = new BayesNet();
 				bayesNet.setSearchAlgorithm(hillClimber);
@@ -247,6 +247,7 @@ public class Evaluate {
 				double fMea = eval.weightedFMeasure();
 				writerHill.write(i + "," + fMea + "\n");
 				System.out.println(i + "," + fMea);
+				writerHill.close();
 
 			}
 
@@ -301,6 +302,7 @@ public class Evaluate {
 			eval.evaluateModel(bayesNet, testInstances);
 
 			fMea = eval.weightedFMeasure();
+			System.out.println(tan.getMarkovBlanketClassifier() + "," + fMea);
 			writerTAN.write(tan.getMarkovBlanketClassifier() + "," + fMea + "\n");
 			writerTAN.close();
 
@@ -332,11 +334,13 @@ public class Evaluate {
 			writerSA.write("runs,F-Measure\n");
 			System.out.println("BARRIDO_SIMULATED_ANNEALING");
 			System.out.println("runs,F-Measure");
+			writerSA.close();
 
 			//SA --> Barrido en runs
 			sa.setTStart(0);
 			sa.setDelta(0.0001);
 			sa.setMarkovBlanketClassifier(true);
+			
 
 			for (int i = 1; i <= 10000; i++) {
 				writerSA = new FileWriter("Barrido_SimulatedAnnealing.csv", true);
