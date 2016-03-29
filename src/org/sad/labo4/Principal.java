@@ -15,6 +15,8 @@ public class Principal {
 	public static void main(String[] args) {
 		
 		
+		System.out.println("PRINCIPAL PRUEBAS");
+		
 		System.out.println("Cargando datos...");
 		//Cargar datos
 		DataHolder.loadTrainData(args[0]);
@@ -48,7 +50,7 @@ public class Principal {
 		//Evaluate.barridoParametrosK2();
 		//Evaluate.barridoParametrosHillClimbing();
 		//Evaluate.barridoParametrosTAN();
-		Evaluate.barridoParametrosSimulatedAnnealing();
+		//Evaluate.barridoParametrosSimulatedAnnealing();
 		
 
 		

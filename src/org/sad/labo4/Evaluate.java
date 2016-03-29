@@ -37,7 +37,8 @@ public class Evaluate {
 
 			Evaluation eval = new Evaluation(DataHolder.getDatosTrainTest());
 			eval.evaluateModel(naiveBayes, DataHolder.getDatosTrainTest());
-			printResultSet(eval, DataHolder.getDatosTrainTest());
+			
+			GetModel.printDetailedAccuracyByClass(eval,"** NAÏVE BAYES - RESUBSTITUTION**");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -71,7 +72,7 @@ public class Evaluate {
 
 			Evaluation eval = new Evaluation(DataHolder.getDatosTrainTest());
 			eval.crossValidateModel(naiveBayes, DataHolder.getDatosTrainTest(), 10, new Random(0));
-			printResultSet(eval, DataHolder.getDatosTrainTest());
+			GetModel.printDetailedAccuracyByClass(eval,"** NAÏVE BAYES - 10CROSSFOLD**");
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -115,7 +116,7 @@ public class Evaluate {
 			Evaluation eval = new Evaluation(testInstances);
 			eval.evaluateModel(naiveBayes, testInstances);
 
-			printResultSet(eval, DataHolder.getDatosTrainTest());
+			GetModel.printDetailedAccuracyByClass(eval,"** NAÏVE BAYES - HoldOut**");
 
 		} catch (Exception e) {
 			e.printStackTrace();
