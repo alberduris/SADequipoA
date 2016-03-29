@@ -184,7 +184,6 @@ public class GetModel {
 		//Cargar datos
 		DataHolder.loadTrainData(args[0]);
 		DataHolder.loadTestData(args[1]);
-		DataHolder.loadBlindData(args[2]);
 		DataHolder.loadTrainTestData();
 		System.out.println("Datos cargados");
 

@@ -36,10 +36,10 @@ public class Preprocess {
 			stwv.setStopwords(new File("/files/custom_stop.csv"));
 
 			//Guardar todos los nuevos datos con batch filtering
-			DataHolder.setDatosTrain(Filter.useFilter(DataHolder.getDatosTrain(), stwv));
-			DataHolder.setDatosTest(Filter.useFilter(DataHolder.getDatosTest(), stwv));
-			DataHolder.setDatosBlind(Filter.useFilter(DataHolder.getDatosBlind(), stwv));
-			DataHolder.setDatosTrainTest(Filter.useFilter(DataHolder.getDatosTrainTest(), stwv));
+			if(DataHolder.getDatosTrain()!=null)DataHolder.setDatosTrain(Filter.useFilter(DataHolder.getDatosTrain(), stwv));
+			if(DataHolder.getDatosTest()!=null)DataHolder.setDatosTest(Filter.useFilter(DataHolder.getDatosTest(), stwv));
+			if(DataHolder.getDatosBlind()!=null)DataHolder.setDatosBlind(Filter.useFilter(DataHolder.getDatosBlind(), stwv));
+			if(DataHolder.getDatosTrainTest()!=null)DataHolder.setDatosTrainTest(Filter.useFilter(DataHolder.getDatosTrainTest(), stwv));
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -64,16 +64,16 @@ public class Preprocess {
 			filter.setInputFormat(DataHolder.getDatosTrain());
 
 			//Guardar todos los nuevos datos con batch filtering
-			DataHolder.setDatosTrain(Filter.useFilter(DataHolder.getDatosTrain(), filter));
-			DataHolder.setDatosTest(Filter.useFilter(DataHolder.getDatosTest(), filter));
-			DataHolder.setDatosBlind(Filter.useFilter(DataHolder.getDatosBlind(), filter));
-			DataHolder.setDatosTrainTest(Filter.useFilter(DataHolder.getDatosTrainTest(), filter));
+			if(DataHolder.getDatosTrain()!=null)DataHolder.setDatosTrain(Filter.useFilter(DataHolder.getDatosTrain(), filter));
+			if(DataHolder.getDatosTest()!=null)DataHolder.setDatosTest(Filter.useFilter(DataHolder.getDatosTest(), filter));
+			if(DataHolder.getDatosBlind()!=null)DataHolder.setDatosBlind(Filter.useFilter(DataHolder.getDatosBlind(), filter));
+			if(DataHolder.getDatosTrainTest()!=null)DataHolder.setDatosTrainTest(Filter.useFilter(DataHolder.getDatosTrainTest(), filter));
 
 			//Ya de paso se discretiza
-			DataHolder.setDatosTrain(discretize(DataHolder.getDatosTrain()));
-			DataHolder.setDatosTest(discretize(DataHolder.getDatosTest()));
-			DataHolder.setDatosBlind(discretize(DataHolder.getDatosBlind()));
-			DataHolder.setDatosTrainTest(discretize(DataHolder.getDatosTrainTest()));
+			if(DataHolder.getDatosTrain()!=null)DataHolder.setDatosTrain(discretize(DataHolder.getDatosTrain()));
+			if(DataHolder.getDatosTest()!=null)DataHolder.setDatosTest(discretize(DataHolder.getDatosTest()));
+			if(DataHolder.getDatosBlind()!=null)DataHolder.setDatosBlind(discretize(DataHolder.getDatosBlind()));
+			if(DataHolder.getDatosTrainTest()!=null)DataHolder.setDatosTrainTest(discretize(DataHolder.getDatosTrainTest()));
 
 		} catch (Exception e) {
 			e.printStackTrace();
