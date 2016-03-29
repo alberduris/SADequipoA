@@ -118,8 +118,10 @@ public class GetModel {
 	public static void printDetailedAccuracyByClass(Evaluation pEval,String pTitle) {
 
 		try {
-			
-			writer = new FileWriter(new File("Infered_Model_Results.csv"),true);
+			File file = new File("Resultados\\Infered_Model_Results.csv");
+			file.getParentFile().mkdir();
+			file.createNewFile();
+			writer = new FileWriter(file,true);
 			
 			writer.write(pTitle+"\n");
 			writer.write("--- Detailed Accuracy By Class ---\n\n");
