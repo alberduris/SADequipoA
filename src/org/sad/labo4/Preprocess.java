@@ -30,8 +30,8 @@ public class Preprocess {
 			stwv.setLowerCaseTokens(true);// Aumenta algo el porcentaje pero ¿Ad-Hoc? 
 			stwv.setStemmer(new LovinsStemmer());// Aumenta algo el porcentaje Stemmer buena idea 
 			stwv.setTokenizer(new WordTokenizer());
-			stwv.setUseStoplist(false); //Mejor resultado
-			stwv.setOutputWordCounts(true); //Es importante tenerlo para el InfoGain
+			stwv.setUseStoplist(true); //Mejor resultado
+			stwv.setOutputWordCounts(true); //Es importante tenerlo para el TFIDF
 			stwv.setIDFTransform(false);
 			stwv.setStopwords(new File("/files/custom_stop.csv"));
 
