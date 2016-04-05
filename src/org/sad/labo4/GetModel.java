@@ -70,10 +70,6 @@ public class GetModel {
 
 	public static void bayesNetTunedHoldOut() {
 
-		Preprocess.randomize(DataHolder.getDatosTrainTest());
-		percentageSplit(70);//Viene especificado en la guia
-		Instances trainInstances = new Instances(DataHolder.getDatosTrainTest(), 0, trainSize);
-		Instances testInstances = new Instances(DataHolder.getDatosTrainTest(), trainSize, testSize);
 
 		try {
 
@@ -85,10 +81,10 @@ public class GetModel {
 			sa.setMarkovBlanketClassifier(true);
 
 			bayesNet = new BayesNet();
-			bayesNet.buildClassifier(trainInstances);
+			bayesNet.buildClassifier(DataHolder.getDatosTrain());
 
-			Evaluation eval = new Evaluation(testInstances);
-			eval.evaluateModel(bayesNet, testInstances);
+			Evaluation eval = new Evaluation(DataHolder.getDatosTest());
+			eval.evaluateModel(bayesNet, DataHolder.getDatosTest());
 			
 			saveBinaryModel();
 
