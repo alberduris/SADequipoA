@@ -18,6 +18,13 @@ public class GetModel {
 	static int testSize;
 	private static FileWriter writer;
 
+	/*
+	 * brief Realiza evaluación mediante resustitución aplicando BayesNet 
+	 * 
+	 * note Se aplica con las configuraciones del clasificador tuneado
+	 *  
+	 * return void Imprime resultados "DetailedAccuracyByClass"
+	 */
 	public static void bayesNetTunedResubstitution() {
 	
 		try {
@@ -43,6 +50,13 @@ public class GetModel {
 
 	}
 
+	/*
+	 * brief Realiza evaluación mediante CrossFold aplicando BayesNet 
+	 * 
+	 * note Se aplica con las configuraciones del clasificador tuneado
+	 *  
+	 * return void Imprime resultados "DetailedAccuracyByClass"
+	 */
 	public static void bayesNetTunedCrossFold() {
 
 		try {
@@ -68,6 +82,13 @@ public class GetModel {
 
 	}
 
+	/*
+	 * brief Realiza evaluación mediante HoldOut aplicando BayesNet 
+	 * 
+	 * note Se aplica con las configuraciones del clasificador tuneado
+	 *  
+	 * return void Imprime resultados "DetailedAccuracyByClass"
+	 */
 	public static void bayesNetTunedHoldOut() {
 
 
@@ -96,6 +117,13 @@ public class GetModel {
 
 	}
 	
+	/*
+	 * brief Almacena el modelo binario del clasificador 
+	 * 
+	 * note Se genera con las configuraciones del clasificador tuneado
+	 *  
+	 * return void Se genera el archivo binario
+	 */
 	public static void saveBinaryModel(){
 		try {
 			SerializationHelper.write("modeloBinarioBayesNet", bayesNet);
@@ -105,12 +133,26 @@ public class GetModel {
 		}//Modelo resultante en fichero binario
 	}
 	
+	/*
+	 * brief Divide las instancias {Train U Test} en dos partes según el porcentaje establecido
+	 *  
+	 * params pPercentage El porcentaje para train
+	 *  
+	 * return void Asigna los tamaños de Train y Test
+	 */
 	public static void percentageSplit(int pPercentage) {
 		trainSize = (int) Math.round(DataHolder.getDatosTrainTest().numInstances() * pPercentage / 100);
 		testSize = DataHolder.getDatosTrainTest().numInstances() - trainSize;
 	}
 	
 
+	/*
+	 * brief Imprime resultados "DetailedAccuracyByClass"
+	 *  
+	 * params pEvaluator El evaluador a imprimir. pTitle El titulo para formatear el archivo y que sea inteligible
+	 *  
+	 * return void 
+	 */
 	public static void printDetailedAccuracyByClass(Evaluation pEval,String pTitle) {
 
 		try {

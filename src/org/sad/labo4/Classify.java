@@ -20,6 +20,16 @@ public class Classify {
 	private static NaiveBayes naiveBayes;
 	private static FileWriter writer;
 
+	
+	/*
+	 * brief Realiza clasificación mediante HoldOut aplicando BayesNet 
+	 * 
+	 * note Se aplica con las configuraciones del clasificador tuneadas
+	 * 
+	 * use printPredictions
+	 *  
+	 * return void 
+	 */
 	public static void classifiyBayesNet() {
 
 		Preprocess.randomize(DataHolder.getDatosTrainTest());
@@ -51,6 +61,15 @@ public class Classify {
 		}
 	}
 
+	/*
+	 * brief Realiza clasificación mediante HoldOut aplicando NaiveBayes 
+	 * 
+	 * note Se aplica con las configuraciones del clasificador standard
+	 * 
+	 * use printPredictions
+	 *  
+	 * return void 
+	 */
 	public static void classifiyNaiveBayes() {
 
 		Preprocess.randomize(DataHolder.getDatosTrainTest());
@@ -84,6 +103,13 @@ public class Classify {
 
 	}
 
+	/*
+	 * brief Genera un archivo e imprime los resultados de la clasificacion
+	 *  
+	 * params pTitulo La clasificacion concreta que se esta realizando para formatear el fichero de manera inteligible
+	 *  
+	 * return void 
+	 */
 	public static void printPredictions(String pTitulo) {
 
 		System.out.println(pTitulo);
@@ -121,6 +147,13 @@ public class Classify {
 
 	}
 
+	/*
+	 * brief Divide las instancias {Train U Test} en dos partes según el porcentaje establecido
+	 *  
+	 * params pPercentage El porcentaje para train
+	 *  
+	 * return void Asigna los tamaños de Train y Test
+	 */
 	public static void percentageSplit(int pPercentage) {
 		trainSize = (int) Math.round(DataHolder.getDatosTrainTest().numInstances() * pPercentage / 100);
 		testSize = DataHolder.getDatosTrainTest().numInstances() - trainSize;

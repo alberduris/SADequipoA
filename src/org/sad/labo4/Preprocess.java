@@ -17,7 +17,15 @@ public class Preprocess {
 
 	static StringToWordVector stwv;
 	static InfoGainAttributeEval infoGain;
-
+	
+	
+	/*
+	 * brief Aplica el filtro stringToWordVector de Weka mediante BatchFiltering y guarda los datos 
+	 * 
+	 * note Se aplica con las configuraciones del filtro decididas
+	 * 
+	 * return void 
+	 */
 	public static void stringToWordVector() {
 
 		stwv = new StringToWordVector();
@@ -47,6 +55,15 @@ public class Preprocess {
 
 	}
 
+	/*
+	 * brief Aplica la selección de atributos InfoGain y el filtro Discretize de Weka mediante BatchFiltering y guarda los datos 
+	 * 
+	 * note Se aplica con las configuraciones del filtro decididas
+	 * 
+	 * use Discretize
+	 * 
+	 * return void 
+	 */
 	public static void infoGain() {
 
 		try {
@@ -81,6 +98,15 @@ public class Preprocess {
 
 	}
 
+	/*
+	 * brief Aplica el filtro randomize de Weka mediante BatchFiltering y guarda los datos 
+	 * 
+	 * note Se aplica con las configuraciones del filtro decididas
+	 * 
+	 * params pData Las instancias a las que se aplica el filtro
+	 * 
+	 * return void 
+	 */
 	public static void randomize(Instances pData) {
 
 		Instances datosProcesados = null;
@@ -104,7 +130,17 @@ public class Preprocess {
 		}
 
 	}
+	
 
+	/*
+	 * brief Aplica el filtro Discretize de Weka mediante BatchFiltering y guarda los datos 
+	 * 
+	 * note Se aplica con las configuraciones del filtro decididas
+	 * 
+	 * params pData Las instancias a las que se aplica el filtro
+	 * 
+	 * return void 
+	 */
 	public static Instances discretize(Instances pData) {
 
 		Instances datosProcesados = null;

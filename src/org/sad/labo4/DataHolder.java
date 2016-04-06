@@ -18,6 +18,13 @@ public class DataHolder {
 	private static Instances datosTrainTest;
 
 	
+	/*
+	 * @brief Lee los datos de un archivo arff
+	 * 
+	 * @param String pPath El path completo del archivo arff
+	 * 
+	 * @return Instances Se devuelve un objecto Instances con las instancias
+	 */
 	public static Instances loadData(String pPath) {
 		Instances datos = null;
 		try {
@@ -223,6 +230,13 @@ public class DataHolder {
 	
 		}
 	
+	/*
+	 * brief Imprime todas las instancias
+	 * 
+	 * param pData Las instancias a imprimir
+	 * 
+	 * return void 
+	 */
 	public static void printDatos(Instances pData){
 		int cont = 0;
 		for(int i = 0; i < pData.numInstances(); i++){
@@ -232,6 +246,13 @@ public class DataHolder {
 		System.out.println("El set de datos tiene "+cont+" instancias.");
 	}
 	
+	/*
+	 * brief Imprime todos los atributos de las instancias 
+	 * 
+	 * param pData Las instancias de las que se imprimirán sus atributos
+	 * 
+	 * return void 
+	 */
 	public static void printAttributos(Instances pData){
 		int cont = 0;
 		for(int i = 0; i < pData.numAttributes(); i++){
@@ -243,6 +264,13 @@ public class DataHolder {
 		
 	}
 
+	/*
+	 * brief Devuelve el indice del atributo clase
+	 * 
+	 * param pData Las instancias de las que se devolverá el atributo clase
+	 * 
+	 * return int attIndex El índice del atributo clase 
+	 */
 	public static int getClassIndex(Instances pData) {
 		Instances datos = pData;
 		String atributo = "";
@@ -257,7 +285,7 @@ public class DataHolder {
 		}
 		return attIndex;
 	
-		}// TODO Auto-generated method stub
+		}
 		
 
 

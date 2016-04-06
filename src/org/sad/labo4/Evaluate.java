@@ -27,6 +27,13 @@ public class Evaluate {
 	private static FileWriter writerTAN;
 	private static FileWriter writerSA;
 
+	/*
+	 * brief Realiza evaluación mediante resustitución aplicando NaiveBayes 
+	 * 
+	 * note Se aplica con las configuraciones del clasificador standar
+	 *  
+	 * return void Imprime resultados "DetailedAccuracyByClass"
+	 */
 	public static void evaluarNaiveResubstitution() {
 		try {
 
@@ -44,7 +51,14 @@ public class Evaluate {
 			e.printStackTrace();
 		}
 	}
-
+	
+	/*
+	 * brief Realiza evaluación mediante resustitucion aplicando BayesNet 
+	 * 
+	 * note Se aplica con las configuraciones del clasificador standar
+	 *  
+	 * return void Imprime resultados figuras de mérito principales
+	 */
 	public static void evaluarBayesNetResubstitution() {
 		try {
 
@@ -62,6 +76,13 @@ public class Evaluate {
 		}
 	}
 
+	/*
+	 * brief Realiza evaluación mediante CrossFold aplicando NaiveBayes 
+	 * 
+	 * note Se aplica con las configuraciones del clasificador standar
+	 *  
+	 * return void Imprime resultados "DetailedAccuracyByClass"
+	 */
 	public static void evaluarNaiveCrossFold() {
 		try {
 
@@ -79,6 +100,13 @@ public class Evaluate {
 		}
 	}
 
+	/*
+	 * brief Realiza evaluación mediante CrossFold aplicando BayesNet 
+	 * 
+	 * note Se aplica con las configuraciones del clasificador standar
+	 *  
+	 * return void Imprime resultados figuras de mérito principales
+	 */
 	public static void evaluarBayesNetCrossFold() {
 		try {
 
@@ -96,6 +124,13 @@ public class Evaluate {
 		}
 	}
 
+	/*
+	 * brief Realiza evaluación mediante HoldOut aplicando NaiveBayes 
+	 * 
+	 * note Se aplica con las configuraciones del clasificador standar
+	 *  
+	 * return void Imprime resultados "DetailedAccuracyByClass"
+	 */
 	public static void evaluarNaiveHoldOut() {
 
 		Preprocess.randomize(DataHolder.getDatosTrainTest());
@@ -123,6 +158,13 @@ public class Evaluate {
 		}
 	}
 
+	/*
+	 * brief Realiza evaluación mediante HoldOut aplicando BayesNet 
+	 * 
+	 * note Se aplica con las configuraciones del clasificador standar
+	 *  
+	 * return void Imprime resultados figuras de mérito principales
+	 */
 	public static void evaluarBayesNetHoldOut() {
 
 		Preprocess.randomize(DataHolder.getDatosTrainTest());
@@ -152,6 +194,11 @@ public class Evaluate {
 		}
 	}
 
+	/*
+	 * brief Realiza barrido de parámetros principales de K2 para BayesNet
+	 *  
+	 * return void Genera un fichero con los resultados
+	 */
 	public static void barridoParametrosK2() {
 
 		System.out.println("BARRIDO PARAMETROS K2 BAYES-NET");
@@ -209,6 +256,11 @@ public class Evaluate {
 
 	}
 
+	/*
+	 * brief Realiza barrido de parámetros principales de HillClimbing para BayesNet
+	 *  
+	 * return void Genera un fichero con los resultados
+	 */
 	public static void barridoParametrosHillClimbing() {
 
 		System.out.println("BARRIDO PARAMETROS HILLCLIMBING BAYES-NET");
@@ -258,6 +310,11 @@ public class Evaluate {
 
 	}
 
+	/*
+	 * brief Realiza barrido de parámetros principales de TAN para BayesNet
+	 *  
+	 * return void Genera un fichero con los resultados
+	 */
 	public static void barridoParametrosTAN() {
 
 		System.out.println("BARRIDO PARAMETROS TAN BAYES-NET");
@@ -313,6 +370,11 @@ public class Evaluate {
 
 	}
 
+	/*
+	 * brief Realiza barrido de parámetros principales de SimulatedAnnealing para BayesNet
+	 *  
+	 * return void Genera un fichero con los resultados
+	 */
 	public static void barridoParametrosSimulatedAnnealing() {
 
 		System.out.println("BARRIDO PARAMETROS SIMULATED ANNEALING BAYES-NET");
@@ -364,12 +426,28 @@ public class Evaluate {
 		}
 
 	}
-
+	
+	/*
+	 * brief Divide las instancias {Train U Test} en dos partes según el porcentaje establecido
+	 *  
+	 * params pPercentage El porcentaje para train
+	 *  
+	 * return void Asigna los tamaños de Train y Test
+	 */
 	public static void percentageSplit(int pPercentage) {
 		trainSize = (int) Math.round(DataHolder.getDatosTrainTest().numInstances() * pPercentage / 100);
 		testSize = DataHolder.getDatosTrainTest().numInstances() - trainSize;
 	}
 
+	/*
+	 * brief Imprime resultados con varias figuras de merito
+	 *  
+	 * params pEvaluator El evaluador a imprimir. pData Las instancias evaluadas
+	 * 
+	 * use printConfussionMatrix
+	 *  
+	 * return void 
+	 */
 	public static void printResultSet(Evaluation pEvaluator, Instances pData) throws Exception {
 
 		double acc = pEvaluator.pctCorrect();
@@ -387,11 +465,17 @@ public class Evaluate {
 		System.out.println("Recall  " + rec);
 
 		System.out.println("************CONFUSSION MATRIX**************");
-		PrecisionRecallCurve.generarCurva(pEvaluator, pData);
 		printConfussionMatrix(confMatrix, pData);
 
 	}
 
+	/*
+	 * brief Imprime la matriz de confusión
+	 *  
+	 * params confMatrix[][] Matriz de double representando la matriz de confusión. pData Las instancias evaluadas
+	 *  
+	 * return void 
+	 */
 	private static void printConfussionMatrix(double confMatrix[][], Instances pData) {
 
 		System.out.print("\n");

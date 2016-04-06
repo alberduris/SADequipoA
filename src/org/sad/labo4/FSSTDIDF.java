@@ -27,6 +27,13 @@ public class FSSTDIDF {
 
 	}
 
+	/*
+	 * brief Aplica el filtro TFIDF de stringToWordVector de Weka y guarda los datos 
+	 * 
+	 * note Se aplica con las configuraciones del filtro decididas
+	 * 
+	 * return void Genera un archivo arff con el resultado de aplicar el filtro
+	 */
 	private static void tfidf(Instances pData, String pName, String pMinTermFreq) {
 		int minTermFreq = 2;
 		if(pMinTermFreq.length() != 0){
@@ -53,7 +60,7 @@ public class FSSTDIDF {
 			stwv.setIDFTransform(true);
 			stwv.setMinTermFreq(minTermFreq);
 
-			//Guardar todos los nuevos datos con batch filtering
+			//Guardar todos los nuevos datos
 			datosTFIDF = Filter.useFilter(pData, stwv);
 
 			ArffSaver saver = new ArffSaver();

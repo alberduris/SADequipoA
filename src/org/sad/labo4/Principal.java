@@ -1,13 +1,11 @@
 package org.sad.labo4;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Principal {
 
 	static Scanner scanner = new Scanner(System.in);
-	private static FileWriter writerK2;
+	
 	
 	//La ejecucion del main
 	// java -jar nombreJar.jar train.arff test.arff blind.arff
@@ -30,27 +28,11 @@ public class Principal {
 		Preprocess.stringToWordVector();
 		Preprocess.infoGain();
 		System.out.println("Datos preprocesados");
+		
+		System.out.println("FIN PRINCIPAL PRUEBAS");
 
 
-		//Clasificar-Evaluar
 		
-//		//Resubstitution
-//		Evaluate.evaluarNaiveResubstitution();
-//		Evaluate.evaluarBayesNetResubstitution();
-//		
-//		//CrossFold
-//		Evaluate.evaluarNaiveCrossFold();
-//		Evaluate.evaluarBayesNetCrossFold();
-//		
-//		//HoldOut
-//		Evaluate.evaluarNaiveHoldOut();
-//		Evaluate.evaluarBayesNetHoldOut();
-		
-		//BarridoParametros
-		//Evaluate.barridoParametrosK2();
-		//Evaluate.barridoParametrosHillClimbing();
-		//Evaluate.barridoParametrosTAN();
-		//Evaluate.barridoParametrosSimulatedAnnealing();
 		
 
 		

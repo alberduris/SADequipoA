@@ -22,6 +22,13 @@ public class ArffToBOW {
 		}
 	}
 
+	/*
+	 * brief Aplica el filtro stringToWordVector de Weka y guarda los datos 
+	 * 
+	 * note Se aplica con las configuraciones del filtro decididas
+	 * 
+	 * return void Genera un archivo arff con el resultado de aplicar el filtro
+	 */
 	public static void stringToWordVector(Instances pData, String pName) {
 		StringToWordVector stwv = new StringToWordVector();
 		Instances datosBOW = null;

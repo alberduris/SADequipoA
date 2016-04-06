@@ -22,7 +22,13 @@ public class FSSInfoGain {
 		}
 
 	}
-
+	/*
+	 * brief Aplica la selección de atributos InfoGain de Weka y guarda los datos 
+	 * 
+	 * note Se aplica con las configuraciones del filtro decididas
+	 * 
+	 * return void Genera un archivo arff con el resultado de aplicar la selección de atributos
+	 */
 	private static void infoGain(Instances pData, String pName) {
 		try {
 			weka.filters.supervised.attribute.AttributeSelection filter = new weka.filters.supervised.attribute.AttributeSelection();
